@@ -11,6 +11,9 @@ cd .git/hooks
 ```
 mv pre-commit.sample pre-commit
 ```
+С помощью команды ```ls``` можно проверить изменения:
+
+
 
 2. Теперь напишем функцию в этом файле, которая и будет проверять наши коммиты на соответствие формату или условию (не пустой файл).
 
@@ -67,7 +70,7 @@ brew install git-flow
 2. Создала ветку ```develop```:
 
 ```
-git checkout -b develop
+git checkout develop
 ```
 
 3. Выполнила инициализацию Git Flow:
@@ -76,7 +79,7 @@ git checkout -b develop
 git flow init
 ```
 
-3. Создайте ветку для новой функциональности ```task-management```:
+3. Создала ветку для новой функциональности ```task-management```:
 
 ```
 git flow feature start task-management
@@ -111,7 +114,7 @@ git flow feature finish task-management
 ![telegram-cloud-document-2-5390887661101672033](https://github.com/user-attachments/assets/95db6626-ea67-4aa1-8242-55c13eb95cfd)
 
 
-7. Переключилась на ветку "develop" и начала создание релиза:
+7. Переключилась на ветку ```develop``` и начала создание релиза:
 
 ```
 git checkout develop
