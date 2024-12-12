@@ -4,36 +4,36 @@
 
 1. Каждый репозиторий на GitHub создается сразу с папкой ```.git```, в которой лежит папка ```hooks```, которая нам и нужна. В ней лежит файл ```pre-commit.sample```. Переместимся в эту директорию и уберем часть ```.sample``` из названия файла, чтобы мы могли с ним работать.
 
-   ```
-   cd .git/hooks
-   ```
+```
+cd .git/hooks
+```
 
-   ```
-   rm pre-commit.sample pre-commit
-   ```
+```
+mv pre-commit.sample pre-commit
+```
 
 2. Теперь напишем функцию в этом файле, которая и будет проверять наши коммиты на соответствие формату или условию (не пустой файл).
 
-  ```
-  #!/bin/bash
+```
+#!/bin/bash
 
-  staged_files=$(git diff --cached --name-only --diff-filter=ACM)
+staged_files=$(git diff --cached --name-only --diff-filter=ACM)
 
-  for file in $staged_files; do
-      if [[ "$file" == *.txt ]]; then
-          if grep -q '.' "$file"; then
-              echo "Все супер"
-              exit 0
-          else
-              echo "Ошибка: файл $file пустой"
-              exit 1
-          fi
+for file in $staged_files; do
+   if [[ "$file" == *.txt ]]; then
+      if grep -q '.' "$file"; then
+         echo "Все супер"
+         exit 0
       else
-          echo "Ошибка: файл $file не является текстовым"
-          exit 1
+         echo "Ошибка: файл $file пустой"
+         exit 1
       fi
-  done
-  ```
+   else
+      echo "Ошибка: файл $file не является текстовым"
+      exit 1
+   fi
+done
+```
 
 В редакторе это выглядит так:
 
